@@ -1,0 +1,7 @@
+alert tcp 27.43.100.29 any -> $HOME_NET $HTTP_PORTS (msg:"Alert: Threat IP accessing local web services"; flow:to_server,established; sid:1; rev:1;)
+
+alert tcp $EXTERNAL_NET any -> $HOME_NET $HTTP_PORTS (msg:"Alert: Scanning phpMyAdmin without a User-Agent"; flow:to_server,established; content:"/phpMyAdmin/scripts/setup.php"; http_uri; content:!"User-Agent|3A 20|"; sid:2; rev:1;)
+
+alert smtp $EXTERNAL_NET any -> $HOME_NET any (msg:"Alert: Email contains malicious Google OAuth phishing link"; content:"https://accounts.google.com/o/oauth2/auth"; sid:3; rev:1;)
+
+alert tcp any any -> any any (msg:"Alert: Yahoo Messenger packets with a service of 00 f1"; content:"YMSG"; offset:0; depth:4; content:"|00 f1|"; offset:10; depth:4; sid:4; rev:1;)
