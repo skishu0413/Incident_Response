@@ -1,4 +1,4 @@
-# 🕵️‍♂️ Project 3: Second Compromise Report (Phishing Investigation)
+# 🕵️‍♂️ Second Compromise Report (Phishing Investigation)
 
 ## 📌 Overview
 
